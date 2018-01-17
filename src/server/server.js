@@ -50,9 +50,10 @@ app.post('/todos', function(req, res) {
   res.json(todos);
 });
 
-app.delete('/todos/:id', function(req, res) {
+app.delete('/todos/:id', function(req, res) { // DONE
+  todos = todos.filter(todo => todo.id != req.params.id);
   console.log('DELETE - todos ', todos);
-  res.status(500).send({ "message": "not implemented" });
+  res.json(JSON.stringify(todos));
 });
 
 app.put('/todos/:id', function(req, res) { // DONE
@@ -61,7 +62,8 @@ app.put('/todos/:id', function(req, res) { // DONE
       todo.status = "complete"
     }
     return todo
-  })
+  });
+  console.log('PUT - todos ', todos);
   res.json(JSON.stringify(todos));
 });
 
