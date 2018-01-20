@@ -11,7 +11,7 @@ export function api(method, data, cb) {
   promise
     .then(json => {
       if (typeof cb === 'function') {
-        cb(JSON.parse(json));
+        cb(json);
       }
     })
     .catch(err => {

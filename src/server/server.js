@@ -14,7 +14,9 @@ var todos = [
   { "id": 2, "text": "Pick up groceries", "status": "complete" }
 ];
 
+
 app.get('/', function(req, res) {
+  console.log('`//${req.hostname}:8080/public/bundle.js` ', `//${req.hostname}:8080/public/bundle.js`);
   var bundle = `//${req.hostname}:8080/public/bundle.js`;
 
   res.render('index', { bundle });
@@ -22,7 +24,7 @@ app.get('/', function(req, res) {
 
 app.get('/todos', function(req, res) {
   console.log('todos ', todos);
-  res.json(JSON.stringify(todos));
+  res.json(todos);
 });
 
 app.get('/todos/:id', function(req, res) {
@@ -32,7 +34,7 @@ app.get('/todos/:id', function(req, res) {
   });
 
   console.log('GET - todo ', todos[index]);
-  res.json(JSON.stringify(todos[index]));
+  res.json(todos[index]);
 });
 
 app.post('/todos', function(req, res) {
@@ -53,7 +55,7 @@ app.post('/todos', function(req, res) {
 app.delete('/todos/:id', function(req, res) { // DONE
   todos = todos.filter(todo => todo.id != req.params.id);
   console.log('DELETE - todos ', todos);
-  res.json(JSON.stringify(todos));
+  res.json(todos);
 });
 
 app.put('/todos/:id', function(req, res) { // DONE
@@ -64,7 +66,7 @@ app.put('/todos/:id', function(req, res) { // DONE
     return todo
   });
   console.log('PUT - todos ', todos);
-  res.json(JSON.stringify(todos));
+  res.json(todos);
 });
 
 // Node server.
