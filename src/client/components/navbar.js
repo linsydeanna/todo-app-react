@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const noop = () => {};
+const noop = () => { };
 
 /**
  * Prop Types
@@ -58,6 +58,12 @@ const Navbar = ({ filterBy, onClickFilter }) => {
         onClick={() => onClickFilter('completed')}
       >
         Completed
+      </span>
+      <span
+        className={completedLinkCls}
+        onClick={() => onClickFilter('archived')}
+      >
+        Archived
       </span>
     </div>
   );

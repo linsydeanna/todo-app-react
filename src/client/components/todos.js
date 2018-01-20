@@ -99,6 +99,9 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
         case 'completed':
           filtered = todo.status !== 'complete';
           break;
+        case 'archived':
+          filtered = !todo.archive
+          break;
         default:
           filtered = false;
       }
