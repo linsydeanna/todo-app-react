@@ -8,14 +8,15 @@
 export function api(method, data, cb) {
   const promise = getApiPromise(method, data);
 
-  promise.then(json => {
-    if (typeof cb === 'function') {
-      cb(json);
-    }
-  })
-  .catch(err => {
-    console.log('error:', err);
-  });
+  promise
+    .then(json => {
+      if (typeof cb === 'function') {
+        cb(JSON.parse(json));
+      }
+    })
+    .catch(err => {
+      console.log('error:', err);
+    });
 }
 
 /**
@@ -46,11 +47,11 @@ export function getApiPromise(method, data) {
   }
 
   return fetch(url, options)
-  .then(response => {
-    if (response.status >= 400) {
-      return response.json().then(err => Promise.reject(err.message));
-    }
+    .then(response => {
+      if (response.status >= 400) {
+        return response.json().then(err => Promise.reject(err.message));
+      }
 
-    return response.json();
-  })
+      return response.json();
+    })
 };

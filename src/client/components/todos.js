@@ -3,7 +3,7 @@ import React from 'react';
 import { api } from '../helpers/api';
 import Todo from './todo';
 
-const noop = () => {};
+const noop = () => { };
 
 /**
  * Prop Types
@@ -58,19 +58,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    *
    * @param  {object} json - Resulting JSON from fetch
    */
-  const putTodo = json => {
-    const index = todos.findIndex(todo => {
-      return todo.id === json.id;
-    });
-
-    updateTodos(
-      [
-        ...todos.slice(0, index),
-        json,
-        ...todos.slice(index + 1),
-      ]
-    );
-  }
+  const putTodo = json => updateTodos(json);
 
   /**
    * Click handler for clicking on delete button
@@ -92,7 +80,6 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
     newTodo.archive = false;
-
     api('PUT', newTodo, putTodo);
   }
 

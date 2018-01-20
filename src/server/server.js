@@ -31,7 +31,7 @@ app.get('/todos/:id', function(req, res) {
     return todo.id === id;
   });
 
-  console.log('GET - todos ', todos);
+  console.log('GET - todo ', todos[index]);
   res.json(JSON.stringify(todos[index]));
 });
 

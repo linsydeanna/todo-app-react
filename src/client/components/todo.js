@@ -3,7 +3,7 @@ import React from 'react';
 import Button from './button';
 import TodoLink from './todo-link';
 
-const noop = () => {};
+const noop = () => { };
 
 /**
  * Prop Types
