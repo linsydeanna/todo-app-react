@@ -16,7 +16,6 @@ var todos = [
 
 
 app.get('/', function(req, res) {
-  console.log('`//${req.hostname}:8080/public/bundle.js` ', `//${req.hostname}:8080/public/bundle.js`);
   var bundle = `//${req.hostname}:8080/public/bundle.js`;
 
   res.render('index', { bundle });
@@ -52,13 +51,21 @@ app.post('/todos', function(req, res) {
   res.json(todos);
 });
 
-app.delete('/todos/:id', function(req, res) { // DONE
+app.delete('/todos/:id', function(req, res) {
   todos = todos.filter(todo => todo.id != req.params.id);
   console.log('DELETE - todos ', todos);
   res.json(todos);
 });
 
-app.put('/todos/:id', function(req, res) { // DONE
+app.put('/todos/:id', function(req, res) {
+  if (req.body.data.archive) {
+    todos = todos.map(todo => {
+      if (todo.id == req.params.id) {
+        todo.archive = true
+      }
+      return todo
+    });
+  }
   todos = todos.map(todo => {
     if (todo.id == req.params.id) {
       todo.status = "complete"
