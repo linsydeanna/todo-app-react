@@ -54,6 +54,16 @@ class TodosPage extends React.Component {
     api('GET', null, this.updateTodos);
   }
 
+
+  /**
+   * Listen for prop changes from the URL filter params, and update state with changes
+   */
+  componentWillReceiveProps(nextProps) {
+    const propsChanged = this.props.params.filter !== nextProps.params.filter
+    if (!!nextProps.params.filter && propsChanged) this.setFilterBy(nextProps.params.filter)
+    if (nextProps.location.pathname === "/") this.setFilterBy('all')
+  }
+
   /**
    * Add todo
    *
@@ -101,10 +111,9 @@ class TodosPage extends React.Component {
    * @returns {ReactElement}
    */
   render() {
-    console.log('this.state.todos ', this.state.todos);
     return (
       <div className={this.baseCls}>
-        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
+        <Navbar filterBy={this.state.filterBy} />
 
         <TodoForm onSubmit={this.addTodo} />
 

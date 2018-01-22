@@ -93,17 +93,20 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     return todos.map(todo => {
       let filtered;
       switch (filterBy) {
+        case 'all':
+          filtered = todo.archive
+          break;
         case 'active':
           filtered = todo.status === 'complete';
           break;
         case 'completed':
-          filtered = todo.status !== 'complete';
+          filtered = todo.status !== 'complete' || todo.archive;
           break;
         case 'archived':
           filtered = !todo.archive
           break;
         default:
-          filtered = false;
+          filtered = todo.archive
       }
 
       return (
