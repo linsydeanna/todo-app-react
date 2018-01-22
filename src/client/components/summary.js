@@ -23,7 +23,7 @@ const defaultProps = {
  * Summary component
  * @returns {ReactElement}
  */
-const Summary = ({ todos }) => {
+const Summary = ({ todos, onClickCompleteAll }) => {
   /**
  * Base CSS class
  */
@@ -31,6 +31,7 @@ const Summary = ({ todos }) => {
   return (
     <div className={baseCls}>
       {todos.filter(todo => todo.status === 'active').length} Tasks Remaining
+      <p onClick={onClickCompleteAll}>Complete All</p>
     </div>
   );
 }

@@ -36,38 +36,24 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
   const baseCls = 'todos';
 
   /**
-   * Callback function to delete todo from todos collection
-   *
-   * @param  {object} json - Resulting JSON from fetch
-   */
-  const deleteTodo = json => updateTodos(json);
-
-  /**
-   * Callback function to replace todo with results of fetching the todo PUT endpoint
-   *
-   * @param  {object} json - Resulting JSON from fetch
-   */
-  const putTodo = json => updateTodos(json);
-
-  /**
    * Click handler for clicking on delete button
-   * Deletes todo
+   * Deletes todo in database and adds callback for updating todos state with JSON from response
    *
    * @param {object} todo - Todo object
    */
   const onClickDelete = todo => {
-    api('DELETE', todo, deleteTodo);
+    api('DELETE', todo, (json) => updateTodos(json));
   };
 
   /**
  * Click handler for clicking on archive button
- * Archives todo
+ * Archives todo in database and adds callback for updating todos state with JSON from response
  *
  * @param {object} todo - Todo object
  */
   const onClickArchive = todo => {
     const newTodo = Object.assign({ archive: true }, todo);
-    api('PUT', newTodo, putTodo);
+    api('PATCH', newTodo, (json) => updateTodos(json));
   };
 
   /**
@@ -81,7 +67,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
     newTodo.archive = false
-    api('PUT', newTodo, putTodo);
+    api('PATCH', newTodo, (json) => updateTodos(json));
   }
 
   /**

@@ -46,6 +46,7 @@ class TodosPage extends React.Component {
     this.postTodo = this.postTodo.bind(this);
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
+    this.onClickCompleteAll = this.onClickCompleteAll.bind(this);
   }
 
   /**
@@ -108,6 +109,17 @@ class TodosPage extends React.Component {
   }
 
   /**
+ * Create new arrays with all todos complete and update state
+ */
+  onClickCompleteAll() {
+    const newTodos = this.state.todos.map(todo => {
+      todo.status = 'complete'
+      return todo
+    })
+    api('PUT', newTodos, this.postTodo);
+  }
+
+  /**
    * Render
    * @returns {ReactElement}
    */
@@ -116,7 +128,10 @@ class TodosPage extends React.Component {
       <div className={this.baseCls}>
         <Navbar filterBy={this.state.filterBy} />
 
-        <Summary todos={this.state.todos} />
+        <Summary
+          todos={this.state.todos}
+          onClickCompleteAll={this.onClickCompleteAll}
+        />
 
         <TodoForm onSubmit={this.addTodo} />
 

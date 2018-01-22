@@ -58,7 +58,13 @@ app.delete('/todos/:id', function(req, res) {
   res.json(todos);
 });
 
-app.put('/todos/:id', function(req, res) {
+app.put('/todos', function(req, res) {
+  console.log('PUT - todos ', todos);
+  todos = req.body.data;
+  res.json(todos);
+});
+
+app.patch('/todos/:id', function(req, res) {
   if (req.body.data.archive) {
     todos = todos.map(todo => {
       if (todo.id == req.params.id) {
@@ -73,7 +79,7 @@ app.put('/todos/:id', function(req, res) {
     }
     return todo
   });
-  console.log('PUT - todos ', todos);
+  console.log('PATCH - todos/:id ', todos);
   res.json(todos);
 });
 
