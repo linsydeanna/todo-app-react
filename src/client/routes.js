@@ -5,7 +5,7 @@ import App from './components/app';
 import TodosPage from './components/todos-page';
 
 const routes = (
-  <Route path="/" component={App}>
+  <Route path="/(:filter)" component={App}>
     <IndexRoute component={TodosPage} />
   </Route>
 );

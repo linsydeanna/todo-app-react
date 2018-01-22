@@ -14,16 +14,17 @@ var todos = [
   { "id": 2, "text": "Pick up groceries", "status": "complete" }
 ];
 
-
-app.get('/', function(req, res) {
-  var bundle = `//${req.hostname}:8080/public/bundle.js`;
-
-  res.render('index', { bundle });
-});
-
 app.get('/todos', function(req, res) {
   console.log('todos ', todos);
   res.json(todos);
+});
+
+app.get('/*', function(req, res, next) {
+  console.log('req.body ', req.body);
+  var bundle = `//${req.hostname}:8080/public/bundle.js`;
+
+  res.render('index', { bundle });
+  next();
 });
 
 app.get('/todos/:id', function(req, res) {
