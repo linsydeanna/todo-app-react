@@ -17,7 +17,7 @@ const propTypes = {
  * App component
  * @returns {ReactElement}
  */
-const App = ({ children, params }) => {
+const App = ({ children }) => {
   /**
    * Base CSS class
    */
@@ -27,8 +27,7 @@ const App = ({ children, params }) => {
     <div className={baseCls}>
       <Header />
 
-      {React.Children.map(children, child =>
-        React.cloneElement(child, { params }))}
+      {children}
     </div>
   );
 };
