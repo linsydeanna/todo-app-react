@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const noop = () => { };
-
 /**
  * Prop Types
  * @private
  */
 const propTypes = {
   filterBy: React.PropTypes.string,
-  onClickFilter: React.PropTypes.func,
 };
 
 /**
@@ -17,15 +14,14 @@ const propTypes = {
  * @private
  */
 const defaultProps = {
-  filterBy: '',
-  onClickFilter: noop,
+  filterBy: ''
 };
 
 /**
  * Navbar component
  * @returns {ReactElement}
  */
-const Navbar = ({ filterBy, onClickFilter }) => {
+const Navbar = ({ filterBy }) => {
   /**
    * Base CSS class
    */

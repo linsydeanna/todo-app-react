@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var todos = [
-  { "id": 1, "text": "Hello, world!" },
+  { "id": 1, "text": "Hello, world!", "status": "active" },
   { "id": 2, "text": "Pick up groceries", "status": "complete" }
 ];
 
