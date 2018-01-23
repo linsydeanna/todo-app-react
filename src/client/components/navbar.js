@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Button from './button';
 
 /**
  * Prop Types
@@ -21,7 +22,7 @@ const defaultProps = {
  * Navbar component
  * @returns {ReactElement}
  */
-const Navbar = ({ filterBy }) => {
+const Navbar = ({ filterBy, onClickArchiveAll }) => {
   /**
    * Base CSS class
    */
@@ -38,31 +39,36 @@ const Navbar = ({ filterBy }) => {
 
   return (
     <div className={baseCls}>
-      <Link
-        to="/"
-        activeClassName={`${baseCls}__item--active`}
-        className={`${baseCls}__item`}
-      >
-        All
+      <div className={`${baseCls}__items-wrapper`}>
+        <Link
+          to="/"
+          activeClassName={`${baseCls}__item--active`}
+          className={`${baseCls}__item`}
+        >
+          All
       </Link>
-      <Link
-        to="/active"
-        className={activeLinkCls}
-      >
-        Active
+        <Link
+          to="/active"
+          className={activeLinkCls}
+        >
+          Active
       </Link>
-      <Link
-        to="/completed"
-        className={completedLinkCls}
-      >
-        Completed
+        <Link
+          to="/completed"
+          className={completedLinkCls}
+        >
+          Completed
       </Link>
-      <Link
-        to="/archived"
-        className={archivedLinkCls}
-      >
-        Archived
+        <Link
+          to="/archived"
+          className={archivedLinkCls}
+        >
+          Archived
       </Link>
+      </div>
+      <div className={`${baseCls}__button-wrapper`}>
+        <Button text="Archive all completed" onClick={onClickArchiveAll} />
+      </div>
     </div>
   );
 }
