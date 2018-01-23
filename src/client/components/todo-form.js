@@ -11,7 +11,7 @@ class TodoForm extends React.Component {
    * Base CSS class
    * @static
    */
-  static baseCls = 'todo-form-container';
+  static baseCls = 'todo-form-wrapper';
 
   /**
    * Prop Types
@@ -66,14 +66,16 @@ class TodoForm extends React.Component {
    */
   render() {
     return (
-      <div className="todo-form-container">
-        <form onSubmit={this.onSubmit}>
+      <div className="todo-form-wrapper">
+        <div />
+        <form className="todo-form" onSubmit={this.onSubmit}>
           <input
             onChange={this.onChange}
             placeholder="Add new todo..."
             value={this.state.input}
           />
         </form>
+        <div />
       </div>
     );
   }

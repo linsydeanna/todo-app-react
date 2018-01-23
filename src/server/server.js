@@ -20,7 +20,6 @@ app.get('/todos', function(req, res) {
 });
 
 app.get('/*', function(req, res, next) {
-  console.log('req.body ', req.body);
   var bundle = `//${req.hostname}:8080/public/bundle.js`;
 
   res.render('index', { bundle });
