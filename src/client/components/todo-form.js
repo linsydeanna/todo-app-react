@@ -1,6 +1,6 @@
 import React from 'react';
 
-const noop = () => {};
+const noop = () => { };
 
 /**
  * TodoForm component
@@ -11,7 +11,7 @@ class TodoForm extends React.Component {
    * Base CSS class
    * @static
    */
-  static baseCls = 'todo-form';
+  static baseCls = 'todo-form-container';
 
   /**
    * Prop Types
@@ -66,13 +66,15 @@ class TodoForm extends React.Component {
    */
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          onChange={this.onChange}
-          placeholder="Add new todo..."
-          value={this.state.input}
-        />
-      </form>
+      <div className="todo-form-container">
+        <form onSubmit={this.onSubmit}>
+          <input
+            onChange={this.onChange}
+            placeholder="Add new todo..."
+            value={this.state.input}
+          />
+        </form>
+      </div>
     );
   }
 }
