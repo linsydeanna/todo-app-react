@@ -30,8 +30,12 @@ const Summary = ({ todos, onClickCompleteAll }) => {
   const baseCls = 'summary'
   return (
     <div className={baseCls}>
-      {todos.filter(todo => todo.status === 'active').length} Tasks Remaining
-      <p onClick={onClickCompleteAll}>Complete All</p>
+      <span className={`${baseCls}__tasks-remaining`}>
+        {todos.filter(todo => todo.status === 'active').length} tasks remaining
+      </span>
+      <span className={`${baseCls}__complete-all`} onClick={onClickCompleteAll}>
+        Complete All
+      </span>
     </div>
   );
 }
