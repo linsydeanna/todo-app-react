@@ -15,7 +15,6 @@ var todos = [
 ];
 
 app.get('/todos', function(req, res) {
-  console.log('todos ', todos);
   res.json(todos);
 });
 
@@ -32,7 +31,6 @@ app.get('/todos/:id', function(req, res) {
     return todo.id === id;
   });
 
-  console.log('GET - todo ', todos[index]);
   res.json(todos[index]);
 });
 
@@ -46,19 +44,15 @@ app.post('/todos', function(req, res) {
   var newTodo = { "id": id, "text": text, "status": "active" };
   todos.push(newTodo);
 
-  console.log('POST - todos ', todos);
-
   res.json(todos);
 });
 
 app.delete('/todos/:id', function(req, res) {
   todos = todos.filter(todo => todo.id != req.params.id);
-  console.log('DELETE - todos ', todos);
   res.json(todos);
 });
 
 app.put('/todos', function(req, res) {
-  console.log('PUT - todos ', todos);
   todos = req.body.data;
   res.json(todos);
 });
@@ -70,7 +64,6 @@ app.patch('/todos/:id', function(req, res) {
     }
     return todo
   });
-  console.log('PATCH - todos/:id ', todos);
   res.json(todos);
 });
 
