@@ -52,8 +52,8 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
  * @param {object} todo - Todo object
  */
   const onClickArchive = todo => {
-    const newTodo = Object.assign({ archive: true }, todo);
-    api('PATCH', newTodo, (json) => updateTodos(json));
+    const archivedTodo = Object.assign(todo, { archive: true });
+    api('PATCH', archivedTodo, (json) => updateTodos(json));
   };
 
   /**
@@ -63,7 +63,6 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    * @param {object} todo - Todo object
    */
   const onClickTodo = todo => {
-
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
     newTodo.archive = false

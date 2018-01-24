@@ -1,12 +1,44 @@
 // Todo module.
 .todo {
+  border-bottom: 1px solid map-get($colors, lightgray);
   cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  height: 120px;
+  margin: 0 5%;
+
+  &--filtered {
+    display: none;
+  }
+
+}
+
+.checkbox-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-text-and-button {
+  align-items: center;
+  display: flex;
+}
+
+.todo-text {
+  color: map-get($colors, darkgray);
+  font-size: 20px;
+  margin-right: 10px;
 
   &--status-complete {
     text-decoration: line-through;
   }
 
-  &--filtered {
-    display: none;
-  }
+}
+
+.icon-wrapper {
+  align-items: center;
+  color: map-get($colors, darkgray);
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
 }

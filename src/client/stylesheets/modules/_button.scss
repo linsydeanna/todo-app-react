@@ -1,6 +1,8 @@
 .button {
+  background: #55B936;
   border: none;
   border-radius: 3px;
-  padding: 3px 8px;
+  color: map-get($colors, ui-light);
   cursor: pointer;
+  padding: 3px 8px;
 }

@@ -64,17 +64,9 @@ app.put('/todos', function(req, res) {
 });
 
 app.patch('/todos/:id', function(req, res) {
-  if (req.body.data.archive) {
-    todos = todos.map(todo => {
-      if (todo.id == req.params.id) {
-        todo.archive = true
-      }
-      return todo
-    });
-  }
   todos = todos.map(todo => {
     if (todo.id == req.params.id) {
-      todo.status = "complete"
+      return req.body.data
     }
     return todo
   });

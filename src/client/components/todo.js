@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from 'react-fontawesome';
 
 import Button from './button';
 import TodoLink from './todo-link';
@@ -39,15 +40,31 @@ const Todo = ({ filtered, onClickDelete, onClickArchive, onClickTodo, status, ar
    */
   const baseCls = 'todo';
 
-  const todoCls = baseCls
-    + (status === 'complete' ? ' todo--status-complete' : '')
+  const todoTextCls = 'todo-text'
+    + (status === 'complete' ? ' todo-text--status-complete' : '')
+
+  const todoFilterCls = 'todo'
     + (filtered ? ' todo--filtered' : '');
 
   return (
-    <li className={todoCls}>
-      <TodoLink text={text} onClick={onClickTodo} />
-      {status === 'complete' && !archive && <Button text="Archive" onClick={onClickArchive} />}
-      <Button text="Delete" onClick={onClickDelete} />
+    <li className={todoFilterCls}>
+      <div className="checkbox-wrapper">
+        <input
+          checked={status === 'complete'}
+          type="checkbox"
+          onChange={onClickTodo}
+        />
+      </div>
+      <div className="todo-text-and-button">
+        <span className={todoTextCls}>
+          {text}
+        </span>
+        {status === 'complete' &&
+          !archive && <Button text="Archive" onClick={onClickArchive} />}
+      </div>
+      <div className="icon-wrapper">
+        <Icon name="trash-o" onClick={onClickDelete} />
+      </div>
     </li>
   );
 }
