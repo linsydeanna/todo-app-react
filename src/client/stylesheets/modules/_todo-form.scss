@@ -1,5 +1,4 @@
 .todo-form-wrapper {
-  background: green;
   display: grid;
   grid-template-columns: 3fr 6fr 3fr;
   height: 100px;
@@ -11,8 +10,9 @@
 }
 
 .todo-form input {
-  border: none;
-  border-radius: 3px;
+  background: linear-gradient(0deg, map-get($colors, ui-light), map-get($colors, lightgray));
+  border: 1px solid map-get($colors, lightgray);
+  border-radius: 5px;
   font-size: 26px;
   height: 50%;
   padding: 0 20px;

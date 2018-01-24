@@ -27,6 +27,10 @@ const Navbar = ({ filterBy, onClickArchiveAll }) => {
    * Base CSS class
    */
   const baseCls = 'navbar'
+
+  /**
+   * Todo item class
+   */
   const itemCls = 'item'
 
   let activeLinkCls = itemCls;
