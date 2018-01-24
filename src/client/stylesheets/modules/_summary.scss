@@ -4,15 +4,16 @@
   display: flex;
   height: 70px;
   padding: 0 5%;
+}
 
-  &__tasks-remaining {
-    color: map-get($colors, darkgray);
-    margin-right: 10px;
-  }
+.tasks-remaining {
+  color: map-get($colors, darkgray);
+  margin-right: 10px;
+}
 
-  &__complete-all {
-    color: map-get($colors, primary);
-    font-size: 12px;
-    font-weight: bold;
-  }
+.complete-all {
+  color: map-get($colors, primary);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
 }

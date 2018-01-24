@@ -3,38 +3,37 @@
   background: #E7E7E7;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0 5%; // NEEDSFIX create a variable for this
-
   height: 50px;
-  &__items-wrapper {
-    align-items: center;
-    display: flex; // NEEDSFIX variable for this - vertical center
-  }
+  padding: 0 5%; // NEEDSFIX create a variable for this
+}
 
-  &__item {
-    color: map-get($colors, darkgray);
-    margin-right: 5px;
-    text-decoration: none;
+.items-wrapper {
+  align-items: center;
+  display: flex; // NEEDSFIX variable for this - vertical center
+}
 
-    @media (min-width: 480px) {
-      margin-right: 15px;
-    }
+.item {
+  color: map-get($colors, darkgray);
+  margin-right: 5px;
+  text-decoration: none;
 
+  @media (min-width: 480px) {
+    margin-right: 15px;
   }
 
   &__item--active {
     font-weight: 700;
   }
 
-  &__button-wrapper {
-    align-items: center;
-    display: none;
-    justify-content: flex-end; // NEEDSFIX variable for this - center
-  
-    @media (min-width: 480px) {
-      display: flex;
-    }
-    
-  }
+}
 
+.archive-all-button-wrapper {
+  align-items: center;
+  display: none;
+  justify-content: flex-end; // NEEDSFIX variable for this - center
+
+  @media (min-width: 480px) {
+    display: flex;
+  }
+  
 }

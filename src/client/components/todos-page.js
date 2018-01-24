@@ -47,6 +47,7 @@ class TodosPage extends React.Component {
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
     this.onClickCompleteAll = this.onClickCompleteAll.bind(this);
+    this.onClickArchiveAll = this.onClickArchiveAll.bind(this);
   }
 
   /**
@@ -109,14 +110,27 @@ class TodosPage extends React.Component {
   }
 
   /**
- * Create new arrays with all todos complete and update state
+ * Create new arrays with all todos complete and update todos state
  */
   onClickCompleteAll() {
     const newTodos = this.state.todos.map(todo => {
       todo.status = 'complete'
       return todo
     })
-    api('PUT', newTodos, this.postTodo);
+    api('PUT', newTodos, this.updateTodos);
+  }
+
+  /**
+ * Create new arrays with all completed todos archived and update todos state
+ */
+  onClickArchiveAll() {
+    const newTodos = this.state.todos.map(todo => {
+      if (todo.status === 'complete') {
+        todo.archive = true
+      }
+      return todo
+    })
+    api('PUT', newTodos, this.updateTodos);
   }
 
   /**
@@ -126,7 +140,10 @@ class TodosPage extends React.Component {
   render() {
     return (
       <div className="todos-page">
-        <Navbar filterBy={this.state.filterBy} />
+        <Navbar
+          filterBy={this.state.filterBy}
+          onClickArchiveAll={this.onClickArchiveAll}
+        />
 
         <Summary
           todos={this.state.todos}

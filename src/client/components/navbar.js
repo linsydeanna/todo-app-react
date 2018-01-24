@@ -27,46 +27,47 @@ const Navbar = ({ filterBy, onClickArchiveAll }) => {
    * Base CSS class
    */
   const baseCls = 'navbar'
+  const itemCls = 'item'
 
-  let activeLinkCls = `${baseCls}__item`;
-  activeLinkCls += filterBy === 'active' ? ` ${baseCls}__item--active` : '';
+  let activeLinkCls = itemCls;
+  activeLinkCls += filterBy === 'active' ? ` ${itemCls}__item--active` : '';
 
-  let completedLinkCls = `${baseCls}__item`;
-  completedLinkCls += filterBy === 'completed' ? ` ${baseCls}__item--active` : '';
+  let completedLinkCls = itemCls;
+  completedLinkCls += filterBy === 'completed' ? ` ${itemCls}__item--active` : '';
 
-  let archivedLinkCls = `${baseCls}__item`;
-  archivedLinkCls += filterBy === 'archived' ? ` ${baseCls}__item--active` : '';
+  let archivedLinkCls = itemCls;
+  archivedLinkCls += filterBy === 'archived' ? ` ${itemCls}__item--active` : '';
 
   return (
     <div className={baseCls}>
-      <div className={`${baseCls}__items-wrapper`}>
+      <div className='items-wrapper'>
         <Link
-          to="/"
-          activeClassName={`${baseCls}__item--active`}
-          className={`${baseCls}__item`}
+          to='/'
+          activeClassName={`${itemCls}__item--active`}
+          className={itemCls}
         >
           All
       </Link>
         <Link
-          to="/active"
+          to='/active'
           className={activeLinkCls}
         >
           Active
       </Link>
         <Link
-          to="/completed"
+          to='/completed'
           className={completedLinkCls}
         >
           Completed
       </Link>
         <Link
-          to="/archived"
+          to='/archived'
           className={archivedLinkCls}
         >
           Archived
       </Link>
       </div>
-      <div className={`${baseCls}__button-wrapper`}>
+      <div className='archive-all-button-wrapper'>
         <Button text="Archive all completed" onClick={onClickArchiveAll} />
       </div>
     </div>
